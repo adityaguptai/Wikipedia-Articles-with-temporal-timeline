@@ -1,0 +1,7 @@
+nltk==3.3
+gensim==3.5.0
+dateparser==0.7.0
+Flask_RESTful==0.3.6
+numpy==1.15.0
+Flask==1.0.2
+wikipedia==1.4.0

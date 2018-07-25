@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+
+    function timeline(Form){
+        
+        $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "/ml_engine",
+        data: JSON.stringify({ name: Form.name.value, nsent: Form.nsent.value })
+        })
+        .done(function( msg ) {
+            console.log(msg)
+            alert( "Data Saved: " + msg );
+        })
+        .fail((err)=>{
+                console.log("Error")
+        });
+    }
+</script>
+
+<div class="row text-center">
+    <div class="col-md-12">
+        <div class="card card-image" >
+            <div class="text-white text-center py-5 px-4 my-5">
+                <h1 class="h1-responsive" style="font-size:500%;">Wikipedia Articles to Temporal Timeline</h1>
+                <form  id="form1" onsubmit="return timeline(this)">
+                    <div class="form-group">
+                        <!-- <label for="name" class="bmd-label-floating"  >Article Name</label> -->
+                        <input type="text" class="form-control" id="name" placeholder="Article Name">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="nvalue" class="bmd-label-floating">No. of sentences</label> -->
+                        <input type="number" class="form-control" id="nsent" placeholder="No. of sentences">
+                    </div>  
+                    <button type="submit"  class="btn btn-raised btn-lg btn-success" >Get Timeline</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
