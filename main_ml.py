@@ -58,6 +58,7 @@ def timeline_sentences(query,n=10):
         #Creating Word Embeddings
         word_embed(results)
         #Loading Word Embedding from file
+        
         w2v_model = gensim.models.Word2Vec.load('w2vmodel')
 
         sortable_articles =[]
