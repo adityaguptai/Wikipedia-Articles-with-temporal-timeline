@@ -104,12 +104,15 @@ def timeline_sentences(query,n=10):
             final_dict = {"date":article["final"],"dates":article["dates"],"word_embed":sent_vec,
                          "sent":article["sent"]}
             final_array.append(final_dict)
+        # final_value = {"data":final_array}
         # w2v_vocub = w2v_model.wv.vocab
         # print(len(w2v_vocub))
         # print(final_array)
+        # final_array = np.array(final_array)
+        # .tolist()
         return final_array
     else:
-        return []
+        return {"data":[]}
         #If there is no article
         # print("No results found!")
 

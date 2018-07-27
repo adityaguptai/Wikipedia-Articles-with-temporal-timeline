@@ -12,13 +12,28 @@
         url: "/ml_engine",
         data: JSON.stringify({ name: Form.name.value, nsent: Form.nsent.value })
         })
-        .done(function( msg ) {
-            console.log(msg)
-            alert( "Data Saved: " + msg );
-        })
+        .done(function(res) {
+            res_0 = res
+            console.log("Success")
+            // console.log(msg[0]["date"])
+            res_parsed = JSON.parse(res)
+            $('#content').append(res_parsed)
+            console.log(typeof(res_parsed))
+            // res_parsed.forEach((ele)=>{
+            //     console.log(ele["date"])
+            // })
+            // $.each(req_parsed, function(i, val) {
+            // // here you can do your magic
+            // $("#date").append(document.createTextNode(val.date));
+            // $("#name").append(document.createTextNode(val.name));
+            // })
+
+            // document.getElementById("date").innerHTML = msg
+        })  
         .fail((err)=>{
                 console.log("Error")
         });
+        return false
     }
 </script>
 
@@ -39,6 +54,9 @@
                     <button type="submit"  class="btn btn-raised btn-lg btn-success" >Get Timeline</button>
                     </form>
             </div>
+            <div id="date"></div>
+            <div id="name"></div>
+            <div id="content"></div>
         </div>
     </div>
 </div>
