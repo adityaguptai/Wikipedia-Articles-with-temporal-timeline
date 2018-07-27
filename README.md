@@ -8,3 +8,8 @@
 (2) Getting articles using Wikipedia article<br>
 (3) Temporal timeline using temporal words and context<br>
 (4) Word Embedding of each sentence using Google Word2Vec<br>
+(5) Deployed as Website build using Flask & jQuery
+
+## Screenshots
+
+<img src="https://image.ibb.co/h6KfG8/Screenshot_1812.png" alt="Screenshot 1" border="0">

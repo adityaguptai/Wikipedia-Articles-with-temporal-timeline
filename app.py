@@ -19,11 +19,18 @@ def ml_engine():
     parser.add_argument('nsent')
     args = parser.parse_args()
     print(args['name'])
-    ml_data = ml.timeline_sentences(str(args['name']),int(args['nsent']))
-    # ml_data = ml.timeline_sentences("Gandhi")
-    print(ml_data)
-    # return jsonify(json.dumps({"items":ml_data}))
-    return jsonify(json.dumps(str(ml_data)))
+    try:
+        ml_data = ml.timeline_sentences(str(args['name']),int(args['nsent']))
+        print(ml_data)
+        return jsonify({"data":ml_data})
+    except:
+        return jsonify({"data":[]})
+    
+
 
 if __name__ == '__main__': #It means the above script gets executed
     app.run(debug=True)
+
+#pipreqs --force ./
+#https://wikipedia-temporal-timeline.herokuapp.com/
+# https://git.heroku.com/wikipedia-temporal-timeline.git

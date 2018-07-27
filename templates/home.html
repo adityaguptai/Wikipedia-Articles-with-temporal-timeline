@@ -13,22 +13,35 @@
         data: JSON.stringify({ name: Form.name.value, nsent: Form.nsent.value })
         })
         .done(function(res) {
-            res_0 = res
-            console.log("Success")
-            // console.log(msg[0]["date"])
-            res_parsed = JSON.parse(res)
-            $('#content').append(res_parsed)
-            console.log(typeof(res_parsed))
-            // res_parsed.forEach((ele)=>{
-            //     console.log(ele["date"])
-            // })
-            // $.each(req_parsed, function(i, val) {
-            // // here you can do your magic
-            // $("#date").append(document.createTextNode(val.date));
-            // $("#name").append(document.createTextNode(val.name));
-            // })
-
-            // document.getElementById("date").innerHTML = msg
+            //Enpyting the html
+            $("#mylist").empty();
+            obj = res["data"]
+            //Print the objects in DOM
+            for (var i = 0; i < obj.length; i++) {
+            var menu = obj[i];
+            var no = document.createElement("h5");
+            no.innerHTML = i+1+".";
+            var date = document.createElement("h5");
+            date.innerHTML = "Date:"+menu['date'];
+            var sent = document.createElement("h4")
+            sent.innerHTML = menu['sent'];
+            var word_embed = document.createElement("h6");
+            word_embed.innerHTML = "Word-embedding:"+menu['word_embed'];     
+            document.getElementById("mylist").appendChild(no);
+            document.getElementById("mylist").appendChild(date);
+            document.getElementById("mylist").appendChild(sent);
+            document.getElementById("mylist").appendChild(word_embed);
+        }
+        if (obj.length == 0) {
+            var sent = document.createElement("h4")
+            sent.innerHTML = "Sorry ! Multiple pages found give a specific article name";
+            document.getElementById("mylist").appendChild(sent);
+        }
+        else if(obj.data.length == 0){
+            var sent = document.createElement("h4")
+            sent.innerHTML = "Sorry ! No wiki page found";
+            document.getElementById("mylist").appendChild(sent);
+        }
         })  
         .fail((err)=>{
                 console.log("Error")
@@ -54,9 +67,7 @@
                     <button type="submit"  class="btn btn-raised btn-lg btn-success" >Get Timeline</button>
                     </form>
             </div>
-            <div id="date"></div>
-            <div id="name"></div>
-            <div id="content"></div>
+            <div id="mylist" style="text-align: left;"></div>
         </div>
     </div>
 </div>

@@ -101,7 +101,9 @@ def timeline_sentences(query,n=10):
                         continue
 #                     print(word)
             # print("Embedding:",sent_vec,"\n")
-            final_dict = {"date":article["final"],"dates":article["dates"],"word_embed":sent_vec,
+            final_dict = {"date":article["final"],
+                        "dates":str(article["dates"]),
+                        "word_embed":str(sent_vec),
                          "sent":article["sent"]}
             final_array.append(final_dict)
         # final_value = {"data":final_array}
