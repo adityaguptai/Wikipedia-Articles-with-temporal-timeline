@@ -356,11 +356,10 @@ def temporal(query):
     
     # PARSER 2 --------------------------------------------------- 
     #Using Natty Parser 
-    # from natty import DateParser
-    # dp = DateParser(query)
     time2=[]
-    # time2 =  datetime.datetime(2018, 7, 25, 18, 29, 23, 66888)
-    # time2 = dp.result()
+    from natty import DateParser
+    dp = DateParser(query)
+    time2 = dp.result()
 #     print(time2)
     
     if time1==None:
